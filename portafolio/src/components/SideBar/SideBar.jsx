@@ -1,91 +1,66 @@
 // Importaciones externas
-import {
-  Box,
-  VStack,
-  Text,
-  Divider,
-  Link,
-  Avatar,
-  Stack,
-} from "@chakra-ui/react";
-import { FaHome, FaUser, FaEnvelope, FaBook } from "react-icons/fa";
-import { MdOutlineWork } from "react-icons/md";
-import PropTypes from "prop-types";
-
-//importar components
-import SocialFooter from "../SocialFooter/SocialFooter";
-import UserProfileHeader from "../UserProfileHeader/UserProfileHeader";
+import { Link, Avatar, HStack, Flex } from "@chakra-ui/react";
 
 //importar assets
-import perfilImg from "../../assets/images/logo-MS.png";
+import perfilImg from "../../assets/images/logo-Ms-transparente.png";
 
-//funcion SidebarLink
-const SidebarLink = ({ icon, children, href }) => {
-  return (
-    <Link {...navItemStyleProps} href={href} scroll={true}>
-      <Stack direction="row" align="center">
-        <Box as={icon} mr={3} />
-        <Text pl={3}>{children}</Text>
-      </Stack>
-    </Link>
-  );
-};
-
-SidebarLink.propTypes = {
-  icon: PropTypes.element.isRequired,
-  children: PropTypes.node.isRequired,
-  href: PropTypes.string.isRequired,
-};
-
-// Componente Sidebar
 const Sidebar = () => {
   return (
-    <VStack bg="#000000" p={5} w="250px" h="100vh" spacing={4} align="stretch">
-      <Avatar
-        name="Soria Marcos"
-        src={perfilImg}
-        size="2xl"
-        alignSelf="center"
-      />
+    <Flex {...navBarContainer}>
+      <Flex align="center">
+        <Link>
+          <Avatar src={perfilImg} {...logoItemStile}></Avatar>
+        </Link>
+      </Flex>
 
-      <VStack>
-        <UserProfileHeader />
-      </VStack>
-
-      <Divider borderColor="#2c2c2c" my={4} />
-
-      <VStack>
-        <SidebarLink icon={FaHome} href="#home">
-          Inicio
-        </SidebarLink>
-        <SidebarLink icon={FaUser} href="#sobreMi">
-          Sobre mi
-        </SidebarLink>
-        <SidebarLink icon={FaBook} href="#habilidades">
-          Habilidades
-        </SidebarLink>
-        <SidebarLink icon={MdOutlineWork} href="#proyectos">
+      <HStack display="flex" alignItems="center" gap="4">
+        <Link href="#sobremi" {...navItemStyles}>
+          Sobre mí
+        </Link>
+        <Link href="#proyectos" {...navItemStyles}>
           Proyectos
-        </SidebarLink>
-        <SidebarLink icon={FaEnvelope} href="#contacto">
+        </Link>
+        <Link href="#contacto" {...navItemStyles}>
           Contacto
-        </SidebarLink>
-      </VStack>
-
-      <SocialFooter />
-    </VStack>
+        </Link>
+      </HStack>
+    </Flex>
   );
 };
 
 // Estilos comunes para los enlaces de navegación
-const navItemStyleProps = {
+const navBarContainer = {
+  as: "nav",
+  align: "center",
+  justify: "space-between",
+  wrap: "wrap",
+  gap: "487.292px",
+  p: "0.5rem",
+  pl: "2rem",
+  pr: "2rem",
+  bg: "#161616",
+  color: "white",
+  borderRadius: "30px",
+};
+
+const logoItemStile = {
+  href: "#home",
+  size: "sm",
+  rounded: "md",
+  _hover: { bg: "#000000.5", color: "#FFFFFF" },
+  _focus: {
+    boxShadow: "none",
+  },
+};
+
+const navItemStyles = {
   w: "100%",
-  py: 2,
-  px: 4,
-  textAlign: "left",
+  textAlign: "center",
   fontSize: "lg",
+  rounded: "md",
   color: "#bebebe",
-  _hover: { bg: "#e03f27", color: "#FFFFFF" },
+
+  _hover: { color: "#FFFFFF" },
   _focus: {
     boxShadow: "none",
   },

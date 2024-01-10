@@ -1,5 +1,5 @@
 //importaciones externas
-import { Box, VStack, HStack, Flex, Divider } from "@chakra-ui/react";
+import { VStack, HStack, Divider } from "@chakra-ui/react";
 //import { Route } from "wouter";
 
 //importar components
@@ -13,46 +13,49 @@ import Sidebar from "./components/SideBar/SideBar";
 //importar assets
 //import bgImg from "./assets/images/bg-desktop.jpeg";
 
-function App() {
-  return (
-    <Flex direction="column" align="center" justify="center" overflow="hidden">
-      <HStack className="background" {...backgroundProps}>
-        <VStack id="sidebar" className="sideBar" as="header" {...sidebarProps}>
-          <Sidebar />
-        </VStack>
-
-        <VStack as="main" className="content" {...mainContentProps}>
-          {renderSection(Home)}
-          {renderSection(About)}
-          {renderSection(Skills)}
-          {renderSection(Projects)}
-          {renderSection(Contact)}
-        </VStack>
-      </HStack>
-    </Flex>
-  );
-}
-
+//funcion de renderizado
 function renderSection(Component) {
   return (
     <>
-      <Box>
+      <HStack>
         <Component />
-      </Box>
-      <Divider w="900px" borderWidth="2px" />
+      </HStack>
+      <Divider w="900px" />
     </>
   );
 }
 
-const backgroundProps = {};
+function App() {
+  return (
+    <HStack className="background" {...backgroundProps}>
+      <VStack as="main" className="content" {...mainContentProps}>
+        <Sidebar />
+        {renderSection(Home)}
+        {/* {renderSection(About)}
+          {renderSection(Skills)}
+          {renderSection(Projects)}
+          {renderSection(Contact)} */}
+      </VStack>
+    </HStack>
+  );
+}
 
-const sidebarProps = {};
+//estilos de la App
+const backgroundProps = {
+  direction: "column",
+  align: "center",
+  justify: "center",
+  overflow: "hidden",
+  p: "1rem",
+  bg: "#000000",
+};
 
 const mainContentProps = {
   flex: "1",
   h: "100vh",
+  w: "100vh",
   overflowY: "auto",
-  bg: "white",
+  bg: "#000000",
   boxShadow: "md",
   sx: {
     "&::-webkit-scrollbar": {
