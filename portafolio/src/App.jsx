@@ -1,5 +1,5 @@
 //importaciones externas
-import { VStack, HStack, Divider } from "@chakra-ui/react";
+import { VStack, HStack, Divider, Box } from "@chakra-ui/react";
 //import { Route } from "wouter";
 
 //importar components
@@ -8,7 +8,7 @@ import Skills from "./components/Skills/Skills";
 import Projects from "./components/Projects/Projects";
 import Contact from "./components/Contact/Contact";
 import Home from "./components/Home/Home";
-import Sidebar from "./components/SideBar/SideBar";
+import NavBar from "./components/NavBar/NavBar";
 
 //importar assets
 //import bgImg from "./assets/images/bg-desktop.jpeg";
@@ -17,26 +17,26 @@ import Sidebar from "./components/SideBar/SideBar";
 function renderSection(Component) {
   return (
     <>
-      <HStack>
+      <Box>
         <Component />
-      </HStack>
-      <Divider w="900px" />
+        {/* <Divider w="full" /> */}
+      </Box>
     </>
   );
 }
 
 function App() {
   return (
-    <HStack className="background" {...backgroundProps}>
+    <Box className="background" {...backgroundProps}>
       <VStack as="main" className="content" {...mainContentProps}>
-        <Sidebar />
+        <NavBar />
         {renderSection(Home)}
-        {/* {renderSection(About)}
-          {renderSection(Skills)}
-          {renderSection(Projects)}
-          {renderSection(Contact)} */}
+        {renderSection(About)}
+        {renderSection(Skills)}
+        {renderSection(Projects)}
+        {renderSection(Contact)}
       </VStack>
-    </HStack>
+    </Box>
   );
 }
 
@@ -46,42 +46,24 @@ const backgroundProps = {
   align: "center",
   justify: "center",
   overflow: "hidden",
-  p: "1rem",
+  p: "2rem",
   bg: "#000000",
 };
 
 const mainContentProps = {
   flex: "1",
   h: "100vh",
-  w: "100vh",
   overflowY: "auto",
+  align: "stretch",
   bg: "#000000",
   boxShadow: "md",
-  sx: {
-    "&::-webkit-scrollbar": {
-      width: "16px",
-      backgroundColor: `rgba(0, 0, 0, 0)`, //color de fondo
-    },
-    "&::-webkit-scrollbar-thumb": {
-      backgroundColor: "#523B39", //color principal
-    },
-    "&::-webkit-scrollbar-thumb:hover": {
-      backgroundColor: "#2F1B1A", //color onSelect
-    },
-  },
 };
 
 export default App;
 
 /* 
-@font-face {
-  font-family: "Cooper Hewitt";
-  src: url("../assets/fonts/CooperHewitt-Light.woff") format("woff"),
-    url("../assets/fonts/CooperHewitt-Thin.woff") format("woff");
-}
-
 Background
-  --bg-100:#000000;
+  --bg-100:#000000;(principal)
   --bg-200:#161616;
   --bg-300:#2c2c2c;
   
