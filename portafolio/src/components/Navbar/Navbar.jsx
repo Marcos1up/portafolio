@@ -1,40 +1,43 @@
 // Importaciones externas
-import { Link, Avatar, HStack, Flex } from "@chakra-ui/react";
+import { Avatar, HStack, Flex } from "@chakra-ui/react";
+import { Link } from "wouter";
 
 //importar assets
 import perfilImg from "../../assets/images/logo-Ms-transparente.png";
 
-const Sidebar = () => {
+const NavBar = () => {
   return (
-    <Flex {...navBarContainer}>
+    <HStack {...navBarContainer}>
       <Flex align="center">
-        <Link>
+        <Link to="/">
           <Avatar src={perfilImg} {...logoItemStile}></Avatar>
         </Link>
       </Flex>
 
       <HStack display="flex" alignItems="center" gap="4">
-        <Link href="#sobremi" {...navItemStyles}>
+        <Link to="/" {...navItemStyles}>
+          Home
+        </Link>
+        <Link to="/about" {...navItemStyles}>
           Sobre mí
         </Link>
-        <Link href="#proyectos" {...navItemStyles}>
+        <Link to="/projects" {...navItemStyles}>
           Proyectos
         </Link>
-        <Link href="#contacto" {...navItemStyles}>
+        <Link to="/contact" {...navItemStyles}>
           Contacto
         </Link>
       </HStack>
-    </Flex>
+    </HStack>
   );
 };
 
 // Estilos comunes para los enlaces de navegación
 const navBarContainer = {
-  as: "nav",
   align: "center",
   justify: "space-between",
-  wrap: "wrap",
-  gap: "487.292px",
+  w: "full",
+  gap: "30.456rem",
   p: "0.5rem",
   pl: "2rem",
   pr: "2rem",
@@ -66,4 +69,4 @@ const navItemStyles = {
   },
 };
 
-export default Sidebar;
+export default NavBar;
