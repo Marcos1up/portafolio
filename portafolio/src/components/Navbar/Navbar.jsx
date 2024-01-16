@@ -62,7 +62,6 @@ const navItemStyles = {
   fontSize: "lg",
   rounded: "md",
   color: "#bebebe",
-
   _hover: { color: "#FFFFFF" },
   _focus: {
     boxShadow: "none",
