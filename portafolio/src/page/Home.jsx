@@ -4,8 +4,7 @@ import { Link } from "wouter";
 import { IoMail, IoCloudDownload } from "react-icons/io5";
 
 function Home() {
-  const cvDownload =
-    "https://drive.google.com/file/d/1RdOlvvayYmuS_1u7HAmnnpAmnu2ybtvu/view?usp=drive_link";
+  const cvDownload = import.meta.env.VITE_CVDOWNLOAD;
 
   return (
     <VStack className="homeContainer" {...mainContentProps}>
@@ -15,27 +14,25 @@ function Home() {
           <Text {...textProps}>Desarrollador Web</Text>
 
           <HStack {...iconsContainerProps}>
-            <a href={cvDownload} target="_blank" rel="noopener noreferrer">
-              <Button
-                variant="ghost"
-                colorScheme="whiteAlpha"
-                color="#737373"
-                leftIcon={<IoCloudDownload />}
-              >
+            <Button
+              variant="ghost"
+              colorScheme="whiteAlpha"
+              color="#737373"
+              leftIcon={<IoCloudDownload />}
+            >
+              <a href={cvDownload} target="_blank" rel="noopener noreferrer">
                 CV
-              </Button>
-            </a>
+              </a>
+            </Button>
 
-            <Link to="/contact">
-              <Button
-                variant="ghost"
-                colorScheme="whiteAlpha"
-                color="#737373"
-                leftIcon={<IoMail />}
-              >
-                Contacto
-              </Button>
-            </Link>
+            <Button
+              variant="ghost"
+              colorScheme="whiteAlpha"
+              color="#737373"
+              leftIcon={<IoMail />}
+            >
+              <Link to="/contact">Contacto</Link>
+            </Button>
           </HStack>
         </Box>
 
@@ -121,8 +118,8 @@ const shapeCircle = {
 const shapeSquare = {
   position: "absolute",
   top: "30%",
-  right: "28%",
-  transform: "translate(-50%, -50%) rotate(45deg)", // Centrado y rotación
+  right: "24%",
+  transform: "translate(-50%, -50%) rotate(45deg)", //centrado y rotación
 
   width: "6rem",
   height: "6rem",
@@ -133,8 +130,8 @@ const shapeSquare = {
 };
 
 const shapeTriangle = {
-  top: "12%",
-  left: "24%",
+  top: "11%",
+  left: "15%",
 
   position: "absolute",
   display: "inline-block",

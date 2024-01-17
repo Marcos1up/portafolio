@@ -19,7 +19,7 @@ function App() {
         <NavBar />
       </Flex>
 
-      <Suspense fallback={<div>Cargando...</div>}>
+      <Suspense className="routesContainer" fallback={<div>Cargando...</div>}>
         <Route exact path="/" component={Home} />
         <Route exact path="/about" component={About} />
         <Route path="/projects" component={Projects} />
@@ -30,7 +30,6 @@ function App() {
 }
 
 //estilos componente app
-
 const appContainerBg = {
   display: "flex",
   flexDirection: "column",
