@@ -27,7 +27,7 @@ function Skills() {
     <Box
       id="habilidades"
       p="5"
-      height="600px"
+      /* height="600px" */
       width="full"
       justifyContent="center"
     >

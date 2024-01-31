@@ -14,23 +14,13 @@ function Home() {
           <Text {...textProps}>Desarrollador Web</Text>
 
           <HStack {...iconsContainerProps}>
-            <Button
-              variant="ghost"
-              colorScheme="whiteAlpha"
-              color="#737373"
-              leftIcon={<IoCloudDownload />}
-            >
+            <Button {...buttonStyleProps} leftIcon={<IoCloudDownload />}>
               <a href={cvDownload} target="_blank" rel="noopener noreferrer">
                 CV
               </a>
             </Button>
 
-            <Button
-              variant="ghost"
-              colorScheme="whiteAlpha"
-              color="#737373"
-              leftIcon={<IoMail />}
-            >
+            <Button {...buttonStyleProps} leftIcon={<IoMail />}>
               <Link to="/contact">Contacto</Link>
             </Button>
           </HStack>
@@ -99,6 +89,16 @@ const iconsContainerProps = {
   justifyContent: "center",
   align: "center",
   width: "full",
+};
+
+const buttonStyleProps = {
+  variant: "ghost",
+  colorScheme: "whiteAlpha",
+  color: "#737373",
+  _hover: { bg: "blackAlpha.300", color: "#ed981a" },
+  _focus: {
+    boxShadow: "none",
+  },
 };
 
 //estilos shape-container

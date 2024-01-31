@@ -34,10 +34,9 @@ const appContainerBg = {
   display: "flex",
   flexDirection: "column",
   minHeight: "100vh",
-  background: "radial-gradient(at center, #080808, #010101)",
   overflowX: "hidden",
-  p: "16px",
-  pt: "32px",
+  padding: "32px 16px 16px 16px",
+  background: "radial-gradient(at center, #080808, #010101)",
 };
 
 const navBarContainerBg = {
@@ -46,17 +45,13 @@ const navBarContainerBg = {
   position: "fixed",
   width: "100%",
   justify: "center",
-  pt: "16px",
-  pb: "16px",
-  pr: "2rem",
+  padding: "16px 2rem 0 1rem",
   bg: "rgba(0, 0, 0, 0.1)",
 };
 
 export default App;
 
 /* 
-background: "radial-gradient(at center, #080808, #010101)",
-
 Background
   --bg-100:#000000;(principal)
   --bg-200:#161616;
