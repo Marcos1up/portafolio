@@ -16,7 +16,7 @@ import {
 import { MdOutgoingMail } from "react-icons/md";
 
 //importar components
-import SocialFooter from "../SocialFooter/SocialFooter";
+import SocialFooter from "./SocialFooter";
 
 //variables de entorno a constantes fuera del componente
 const serviceID = import.meta.env.VITE_SERVICE_ID;
@@ -101,6 +101,18 @@ function Contact() {
                 placeholder="Mensaje | Message"
                 {...imputFormStyle}
                 height="84px"
+                sx={{
+                  "&::-webkit-scrollbar": {
+                    width: "13px",
+                    borderRadius: "8px",
+                    backgroundColor: `rgba(0, 0, 0, .1)`,
+                  },
+                  "&::-webkit-scrollbar-thumb": {
+                    borderRadius: "8px",
+                    backgroundColor: `#803e00`,
+                    border: "4px solid #161616",
+                  },
+                }}
               />
             </FormControl>
 
@@ -137,6 +149,19 @@ const contactContainer = {
   alignItems: "center",
   overflow: "hidden",
   mt: "2.5rem",
+  sx: {
+    overflowY: "auto", // Permitir desplazamiento vertical si es necesario
+    "&::-webkit-scrollbar": {
+      width: "13px",
+      borderRadius: "8px",
+      backgroundColor: `rgba(0, 0, 0, .1)`, // Color de fondo del scrollbar
+    },
+    "&::-webkit-scrollbar-thumb": {
+      borderRadius: "8px",
+      backgroundColor: `#803e00`, // Color del thumb del scrollbar
+      border: "4px solid #161616", // Borde del thumb, mismo color que el fondo para efecto "invisible"
+    },
+  },
 };
 
 const contactTitle = {
@@ -147,7 +172,7 @@ const contactTitle = {
 
 const formContainerStyle = {
   color: "#FFFFFF",
-  bg: "#161616",
+  bg: "rgba(22, 22, 22, .75)",
   fontFamily: "Roboto, Helvetica Neue, sans-serif",
   letterSpacing: ".2rem",
   textAlign: "center",
@@ -231,6 +256,7 @@ const shapeCircle = {
 const shapeTriangle2 = {
   left: "11%",
   top: "15%",
+  transform: " rotate(-15deg)",
 
   overflow: "hidden",
   display: "inline-block",

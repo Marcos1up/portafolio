@@ -3,7 +3,7 @@ import { VStack, Heading, Text, Box, Button, HStack } from "@chakra-ui/react";
 import { Link } from "wouter";
 import { IoMail, IoCloudDownload } from "react-icons/io5";
 
-function Home() {
+function Hero() {
   const cvDownload = import.meta.env.VITE_CVDOWNLOAD;
 
   return (
@@ -14,11 +14,11 @@ function Home() {
           <Text {...textProps}>Desarrollador Web</Text>
 
           <HStack {...iconsContainerProps}>
-            <Button {...buttonStyleProps} leftIcon={<IoCloudDownload />}>
-              <a href={cvDownload} target="_blank" rel="noopener noreferrer">
+            <a href={cvDownload} target="_blank" rel="noopener noreferrer">
+              <Button {...buttonStyleProps} leftIcon={<IoCloudDownload />}>
                 CV
-              </a>
-            </Button>
+              </Button>
+            </a>
 
             <Button {...buttonStyleProps} leftIcon={<IoMail />}>
               <Link to="/contact">Contacto</Link>
@@ -85,14 +85,16 @@ const textProps = {
 
 const iconsContainerProps = {
   display: "flex",
-  gap: "4px",
+  gap: "1rem",
   justifyContent: "center",
   align: "center",
   width: "full",
+  mt: ".6rem",
 };
 
 const buttonStyleProps = {
-  variant: "ghost",
+  variant: "link",
+  textDecoration: "none",
   colorScheme: "whiteAlpha",
   color: "#737373",
   _hover: { bg: "blackAlpha.300", color: "#ed981a" },
@@ -156,6 +158,7 @@ const shapeTriangleChild = {
 const shapeTriangle2 = {
   right: "25%",
   top: "73%",
+  transform: " rotate(15deg)",
 
   overflow: "hidden",
   display: "inline-block",
@@ -177,4 +180,4 @@ const shapeTriangleChild2 = {
     "linear-gradient(to bottom left, rgba(237,152,26,1), rgba(255,255,255,0))",
 };
 
-export default Home;
+export default Hero;

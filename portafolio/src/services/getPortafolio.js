@@ -39,42 +39,34 @@ function getPortafolio() {
       {
         nombre: "HTML",
         imagen: htmlIcon,
-        nivel: 100,
       },
       {
         nombre: "CSS",
         imagen: cssIcon,
-        nivel: 68,
       },
       {
         nombre: "JavaScript",
         imagen: javaScriptIcon,
-        nivel: 85,
       },
       {
         nombre: "TypeScript",
         imagen: typeScriptIcon,
-        nivel: 75,
       },
       {
         nombre: "React",
         imagen: reactIcon,
-        nivel: 86,
       },
       {
         nombre: "Node.js",
         imagen: nodeIcon,
-        nivel: 90,
       },
       {
         nombre: "MongoDB",
         imagen: mongoDBIcon,
-        nivel: 90,
       },
       {
         nombre: "PostgreSQL",
         imagen: postgresIcon,
-        nivel: 61,
       },
     ],
   };

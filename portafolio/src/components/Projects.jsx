@@ -11,7 +11,7 @@ import {
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-import getPortafolio from "../../services/getPortafolio";
+import getPortafolio from "../services/getPortafolio";
 
 import { FiExternalLink } from "react-icons/fi";
 import { BsGithub } from "react-icons/bs";
