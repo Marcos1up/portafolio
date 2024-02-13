@@ -1,7 +1,7 @@
+import { useRef, useEffect } from "react";
 import {
   Heading,
   Text,
-  VStack,
   HStack,
   Image,
   Flex,
@@ -22,7 +22,6 @@ import getPortafolio from "../services/getPortafolio";
 
 function CareerProfile() {
   const portafolio = getPortafolio();
-  const habilidadesChunks = chunkArray(portafolio.habilidades, 4);
 
   //constante para el stepper
   const steps = [
@@ -50,7 +49,7 @@ function CareerProfile() {
     {
       title: "Actualmente...",
       description:
-        "Me encuentro en la busqueda de proyectos donde pueda aportar mi valor.",
+        "Me encuentro en busqueda constante de proyectos donde pueda seguir aportando mi valor.",
     },
   ];
 
@@ -60,13 +59,25 @@ function CareerProfile() {
     count: steps.length,
   });
 
-  function chunkArray(array, size) {
-    const chunkedArray = [];
-    for (let i = 0; i < array.length; i += size) {
-      chunkedArray.push(array.slice(i, i + size));
-    }
-    return chunkedArray;
-  }
+  // Lógica para el desplazamiento automático
+  const scrollRef = useRef(null);
+
+  useEffect(() => {
+    const scroll = () => {
+      if (scrollRef.current) {
+        const maxScrollLeft =
+          scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        if (scrollRef.current.scrollLeft < maxScrollLeft) {
+          scrollRef.current.scrollLeft += 1;
+        } else {
+          scrollRef.current.scrollLeft = 0;
+        }
+      }
+    };
+
+    const interval = setInterval(scroll, 40); // Ajusta la velocidad según sea necesario
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Flex
@@ -74,21 +85,15 @@ function CareerProfile() {
       className="habilidadesContainer"
       {...expSkillsContainer}
     >
-      <VStack className="skillsContainer" {...skillsContainer}>
-        {habilidadesChunks.map((chunk, chunkIndex) => (
-          <HStack key={chunkIndex}>
-            {chunk.map((habilidad, index) => (
-              <VStack key={index}>
-                <Image
-                  src={habilidad.imagen}
-                  alt={`Imagen de ${habilidad.nombre}`}
-                  {...skillsImage}
-                />
-              </VStack>
-            ))}
-          </HStack>
-        ))}
-      </VStack>
+      <Flex ref={scrollRef} {...skillsContainer}>
+        <HStack spacing="5">
+          {portafolio.habilidades.map((habilidad, index) => (
+            <Box key={index} minW="120px">
+              <Image src={habilidad.imagen} alt={`Habilidad ${index + 1}`} />
+            </Box>
+          ))}
+        </HStack>
+      </Flex>
 
       <Heading as="h1" className="contactTitle" {...titleStyles}>
         <Flex alignItems="center">
@@ -148,16 +153,14 @@ const titleStyles = {
 
 const skillsContainer = {
   align: "center",
-  overflowX: "hidden",
+  overflow: "hidden",
   borderRadius: "0.5rem",
-  w: "80%",
+  w: "43rem",
   h: "9.4rem",
   p: "24px",
   m: "0 2rem 0 2rem",
   bg: "rgba(22, 22, 22, .75)",
 };
-
-const skillsImage = { align: "start", m: "0 1rem 0 1rem" };
 
 const subTitleStyle = {
   color: "#737373",

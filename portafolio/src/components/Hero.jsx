@@ -45,7 +45,6 @@ function Hero() {
 //estilos
 const mainContentProps = {
   flex: "1",
-  p: "1.5rem",
   overflowY: "auto",
   align: "stretch",
   boxShadow: "md",
@@ -53,20 +52,18 @@ const mainContentProps = {
 
 const homeContainerProps = {
   flex: "1",
-  minHeight: { base: "100vh", md: "600px" }, //responsive
+  minHeight: { base: "90vh", md: "90vh", lg: "90vh" }, //responsive
   width: "100%",
   justifyContent: "center",
   flexDirection: "column",
   align: "center",
-  p: "3rem",
 };
 
 const headingProps = {
   as: "h1",
   color: "#ffffff",
   fontFamily: ["Roboto", "Helvetica Neue", "sans-serif"],
-  fontSize: "6rem",
-  align: "center",
+  fontSize: { base: "4.5rem", md: "6rem", lg: "6rem" }, // Ajusta el tamaño del texto para diferentes tamaños de pantalla
   textAlign: "center",
   lineHeight: "1",
 };
@@ -75,24 +72,22 @@ const textProps = {
   color: "#737373",
   fontFamily: ["Roboto", "Helvetica Neue", "sans-serif"],
   letterSpacing: ".2rem",
-  fontSize: "12px",
-  justifyContent: "center",
-  align: "center",
-  width: "full",
+  fontSize: { base: "sm", md: "md" }, // Ajuste de tamaño de texto
   textAlign: "center",
   mt: "1.5rem",
 };
 
 const iconsContainerProps = {
   display: "flex",
-  gap: "1rem",
+  zIndex: "10",
+  gap: { base: "2", md: "4" }, // Ajustar el gap
   justifyContent: "center",
-  align: "center",
   width: "full",
   mt: ".6rem",
 };
 
 const buttonStyleProps = {
+  zIndex: "10",
   variant: "link",
   textDecoration: "none",
   colorScheme: "whiteAlpha",
@@ -106,8 +101,9 @@ const buttonStyleProps = {
 //estilos shape-container
 const shapeCircle = {
   position: "absolute",
-  top: "60%",
-  left: "25%",
+  top: { base: "50%", sm: "60%", md: "60%" },
+  left: { base: "10%", sm: "20%", md: "25%" },
+  zIndex: "0",
 
   width: "10rem",
   height: "10rem",
@@ -120,7 +116,8 @@ const shapeCircle = {
 const shapeSquare = {
   position: "absolute",
   top: "30%",
-  right: "24%",
+  right: { base: "4%", sm: "24%", md: "24%" },
+  zIndex: "0",
   transform: "translate(-50%, -50%) rotate(45deg)", //centrado y rotación
 
   width: "6rem",
@@ -134,6 +131,7 @@ const shapeSquare = {
 const shapeTriangle = {
   top: "11%",
   left: "15%",
+  zIndex: "0",
 
   position: "absolute",
   display: "inline-block",
@@ -145,6 +143,7 @@ const shapeTriangle = {
 const shapeTriangleChild = {
   top: "50%",
   left: "15%",
+  zIndex: "0",
   transform:
     "translate(0%, 0%) rotate(45deg) skew(0) skewY(0) scaleX(1) scaleY(1)",
 
@@ -157,7 +156,8 @@ const shapeTriangleChild = {
 
 const shapeTriangle2 = {
   right: "25%",
-  top: "73%",
+  top: { base: "70%", sm: "73%", md: "73%", lg: "73%", xl: "73%" },
+  zIndex: "0",
   transform: " rotate(15deg)",
 
   overflow: "hidden",
@@ -170,6 +170,7 @@ const shapeTriangle2 = {
 const shapeTriangleChild2 = {
   top: "50%",
   left: "15%",
+  zIndex: "0",
   transform:
     "translate(0%, 0%) rotate(45deg) skew(0) skewY(0) scaleX(1) scaleY(1)",
 

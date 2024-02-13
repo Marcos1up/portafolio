@@ -1,4 +1,5 @@
 // Importaciones externas
+import { useState } from "react";
 import { Avatar, HStack, Flex, Button } from "@chakra-ui/react";
 import { Link } from "wouter";
 
@@ -6,28 +7,54 @@ import { Link } from "wouter";
 import perfilImg from "../assets/images/logo-Ms-transparente.png";
 
 const NavBar = () => {
+  const [selected, setSelected] = useState("");
+
+  const handleSelect = (route) => {
+    setSelected(route);
+  };
+
   return (
     <HStack {...navBarContainer}>
-      <Flex align="center">
+      <Flex
+        align="center"
+        color={selected === "/" ? "#ffffff" : "#737373"}
+        onClick={() => handleSelect("/")}
+      >
         <Link to="/">
           <Avatar src={perfilImg} {...logoItemStile}></Avatar>
         </Link>
       </Flex>
 
       <HStack {...linksContainer}>
-        <Button {...buttonStyleProps}>
+        <Button
+          {...buttonStyleProps}
+          color={selected === "/" ? "#ffffff" : "#737373"}
+          onClick={() => handleSelect("/")}
+        >
           <Link to="/">Inicio</Link>
         </Button>
 
-        <Button {...buttonStyleProps}>
+        <Button
+          {...buttonStyleProps}
+          color={selected === "/about" ? "#ffffff" : "#737373"}
+          onClick={() => handleSelect("/about")}
+        >
           <Link to="/about">Sobre mí</Link>
         </Button>
 
-        <Button {...buttonStyleProps}>
+        <Button
+          {...buttonStyleProps}
+          color={selected === "/projects" ? "#ffffff" : "#737373"}
+          onClick={() => handleSelect("/projects")}
+        >
           <Link to="/projects">Proyectos</Link>
         </Button>
 
-        <Button {...buttonStyleProps}>
+        <Button
+          {...buttonStyleProps}
+          color={selected === "/contact" ? "#ffffff" : "#737373"}
+          onClick={() => handleSelect("/contact")}
+        >
           <Link to="/contact">Contacto</Link>
         </Button>
       </HStack>
@@ -37,19 +64,22 @@ const NavBar = () => {
 
 // Estilos comunes para los enlaces de navegación
 const navBarContainer = {
-  align: "center",
-  justify: "space-between",
-  w: "full",
-  gap: "30.456rem",
-  p: "0.5rem",
-  pl: "2rem",
-  pr: "2rem",
   bg: "rgba(22, 22, 22, .85)",
   color: "white",
   borderRadius: "30px",
+  align: "center",
+  justify: { base: "center", md: "space-between" }, // Centrado en dispositivos pequeños, espacio entre en dispositivos medianos y grandes
+  w: "full",
+  minW: "365px",
+  minH: "48px",
+  p: "0.5rem",
+  pl: { base: "1rem", md: "2rem" }, // Ajustar el padding izquierdo
+  pr: { base: "1rem", md: "2rem" }, // Ajustar el padding derecho
+  gap: { base: "1rem", lg: "30.456rem" }, // Ajustar el gap según el tamaño de la pantalla
 };
 
 const logoItemStile = {
+  display: { base: "none", md: "flex" },
   href: "#home",
   size: "sm",
   rounded: "md",
@@ -62,7 +92,7 @@ const logoItemStile = {
 const linksContainer = {
   display: "flex",
   alignItems: "center",
-  gap: "4",
+  gap: { base: "2", md: "4" }, // Menor gap en dispositivos pequeños
 };
 
 const buttonStyleProps = {

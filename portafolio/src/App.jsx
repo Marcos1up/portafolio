@@ -14,22 +14,7 @@ const Contact = lazy(() => import("./components/Contact"));
 
 function App() {
   return (
-    <Box
-      className="appContainer"
-      {...appContainerBg}
-      sx={{
-        "&::-webkit-scrollbar": {
-          width: "13px",
-          borderRadius: "8px",
-          backgroundColor: `rgba(0, 0, 0, .1)`, // Color de fondo del scrollbar
-        },
-        "&::-webkit-scrollbar-thumb": {
-          borderRadius: "8px",
-          backgroundColor: `#803e00`, // Color del thumb del scrollbar
-          border: "4px solid #161616", // Color del borde del thumb, mismo que el fondo para efecto "invisible"
-        },
-      }}
-    >
+    <Box className="appContainer" {...appContainerBg}>
       <Flex className="navBarApp" {...navBarContainerBg}>
         <NavBar />
       </Flex>
@@ -48,9 +33,11 @@ function App() {
 const appContainerBg = {
   display: "flex",
   flexDirection: "column",
-  minHeight: "100vh",
+  height: "100vh",
+  minHeight: "600px",
+  minWidth: "375px",
   overflowX: "hidden",
-  padding: "32px 16px 16px 16px",
+  padding: "2rem 1rem 1rem 1rem",
   background: "radial-gradient(at center, #080808, #010101)",
 };
 
@@ -58,9 +45,10 @@ const navBarContainerBg = {
   zIndex: "1",
   top: "0",
   position: "fixed",
-  width: "100%",
+  width: { base: "91.5%", lg: "100%" },
+  align: "center",
   justify: "center",
-  padding: "16px 2rem 0 1rem",
+  padding: { base: "1rem", md: "1rem 2rem" },
 };
 
 export default App;

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import {
   Box,
@@ -12,6 +12,7 @@ import {
   VStack,
   Divider,
   Flex,
+  useToast,
 } from "@chakra-ui/react";
 import { MdOutgoingMail } from "react-icons/md";
 
@@ -24,20 +25,45 @@ const templateID = import.meta.env.VITE_TEMPLATE_ID;
 const apiKey = import.meta.env.VITE_API_KEY;
 
 function Contact() {
+  const [isLoading, setIsLoading] = useState(false);
   const refForm = useRef();
+
+  //usar toast para el manejo de las alertas
+  const toast = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    emailjs
-      .sendForm(serviceID, templateID, refForm.current, apiKey)
-      .then((result) => {
-        alert("Mensaje enviado con éxito!");
-        console.log(result.text);
-      })
-      .catch((error) => {
-        alert("Ocurrió un error al enviar el mensaje.");
-        console.error(error);
-      });
+    setIsLoading(true);
+
+    // Temporizador antes de enviar el formulario
+    setTimeout(() => {
+      emailjs
+        .sendForm(serviceID, templateID, refForm.current, apiKey)
+        .then((result) => {
+          setIsLoading(false);
+          toast({
+            title: "Mensaje enviado con éxito!",
+            description: "Me pondré en contacto contigo lo antes posible.",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+          console.log(result.text);
+        })
+        .catch((error) => {
+          setIsLoading(false);
+          toast({
+            title: "Ocurrió un error al enviar el mensaje.",
+            description: error.message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+            position: "top",
+          });
+          console.error(error);
+        });
+    }, 2000);
   };
 
   return (
@@ -118,6 +144,8 @@ function Contact() {
 
             <Button
               className="buttonSubmit"
+              isLoading={isLoading}
+              loadingText="Enviando..."
               {...buttonSubmit}
               colorScheme="blue"
               type="submit"
