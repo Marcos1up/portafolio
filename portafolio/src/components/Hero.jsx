@@ -62,7 +62,7 @@ const headingProps = {
   as: "h1",
   color: "#ffffff",
   fontFamily: ["Roboto", "Helvetica Neue", "sans-serif"],
-  fontSize: { base: "4.5rem", md: "6rem", lg: "6rem" }, // Ajusta el tamaño del texto para diferentes tamaños de pantalla
+  fontSize: { base: "4.5rem", md: "6rem", lg: "6rem" },
   textAlign: "center",
   lineHeight: "1",
 };
