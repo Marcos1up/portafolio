@@ -62,20 +62,20 @@ const NavBar = () => {
   );
 };
 
-// Estilos comunes para los enlaces de navegación
+//estilos para los enlaces de navegación
 const navBarContainer = {
   bg: "rgba(22, 22, 22, .85)",
   color: "white",
   borderRadius: "30px",
   align: "center",
-  justify: { base: "center", md: "space-between" }, // Centrado en dispositivos pequeños, espacio entre en dispositivos medianos y grandes
+  justify: { base: "center", md: "space-between" },
   w: "full",
   minW: "365px",
   minH: "48px",
   p: "0.5rem",
-  pl: { base: "1rem", md: "2rem" }, // Ajustar el padding izquierdo
-  pr: { base: "1rem", md: "2rem" }, // Ajustar el padding derecho
-  gap: { base: "1rem", lg: "30.456rem" }, // Ajustar el gap según el tamaño de la pantalla
+  pl: { base: "1rem", md: "2rem" },
+  pr: { base: "1rem", md: "2rem" },
+  gap: { base: "1rem", lg: "30.456rem" },
 };
 
 const logoItemStile = {
