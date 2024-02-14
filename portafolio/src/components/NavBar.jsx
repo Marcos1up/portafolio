@@ -1,4 +1,4 @@
-// Importaciones externas
+//importaciones externas
 import { useState } from "react";
 import { Avatar, HStack, Flex, Button } from "@chakra-ui/react";
 import { Link } from "wouter";
