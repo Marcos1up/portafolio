@@ -92,7 +92,7 @@ const logoItemStile = {
 const linksContainer = {
   display: "flex",
   alignItems: "center",
-  gap: { base: "2", md: "4" }, // Menor gap en dispositivos pequeños
+  gap: { base: "2", md: "4" },
 };
 
 const buttonStyleProps = {
