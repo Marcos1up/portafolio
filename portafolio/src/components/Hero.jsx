@@ -47,7 +47,6 @@ const mainContentProps = {
   flex: "1",
   overflowY: "auto",
   align: "stretch",
-  boxShadow: "md",
 };
 
 const homeContainerProps = {

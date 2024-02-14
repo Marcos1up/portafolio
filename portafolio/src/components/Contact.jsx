@@ -127,6 +127,8 @@ function Contact() {
                 placeholder="Mensaje | Message"
                 {...imputFormStyle}
                 height="84px"
+                minHeight="84px"
+                maxHeight="150px"
                 sx={{
                   "&::-webkit-scrollbar": {
                     width: "13px",
