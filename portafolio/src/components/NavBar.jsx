@@ -4,7 +4,7 @@ import { Avatar, HStack, Flex, Button } from "@chakra-ui/react";
 import { Link } from "wouter";
 
 //importar assets
-import perfilImg from "../assets/images/logo-Ms-transparente.png";
+import perfilImg from "../assets/images/logo-MS-transparente.png";
 
 const NavBar = () => {
   const [selected, setSelected] = useState("");
